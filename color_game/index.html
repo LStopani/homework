@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Memory Game!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Memory Game!</h1>
+  <p>Difficulty:
+    <input type="range" id="difficulty" name="difficulty" min="4" max="50" step="2" value="10">
+    <button type="button" id="newGame">New Game</button>
+  </p>
+  <p>Pairs: <b id="pairs"></b>
+    Guesses: <b id="guesses"></b></p>
+  <p>Personal Best: <b id="bestPairs"></b>pairs
+    in <b id="bestGuess"></b>guesses</b></p>
+  <div id="game">
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
