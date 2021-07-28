@@ -1,0 +1,36 @@
+/* game board table */
+
+#game {
+display: flex;
+  padding: 0px;
+  margin: 0;
+
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  margin: .5vw;
+width:8vw;
+  /* background-color: yellow; */
+}
+
+ .cell, .red, .black {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+box-shadow: inset 1px 1px 3px 1px gray;
+background-color: rgb(245 245 245);
+  border-radius: 4vw;
+  margin: .5vw;
+  width: 8vw;
+  height: 8vw;
+}
+
+.red{
+  background-color: red;
+}
+
+.black{
+  background-color: black;
+}
