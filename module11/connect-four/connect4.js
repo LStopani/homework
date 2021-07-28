@@ -22,15 +22,14 @@ function setDOM() {
 
 // check localStorage
 function checkLocal() {
-  if (localStorage.getItem('currentGame') !== undefined) {
-    let retrieveSave = JSON.parse(localStorage.getItem('currentGame'));
+  if (JSON.parse(localStorage.getItem('savedGame')) !== null) {
+    let retrieveSave = JSON.parse(localStorage.getItem('savedGame'));
     for (let c = 0; c <= 6; c++) {
-      let curColumn = retrieveSave[c]
+      let curColumn = retrieveSave[c];
       for (let i = 0; i <= 5; i++) {
-        let curColumn = retrieveSave[c];
         if (curColumn[i] !== undefined) {
           document.getElementById(`ray${c}_i${i}`).className = `${curColumn[i]}`;
-          let curRay = rayMap.get(`ray${c}`)
+          let curRay = rayMap.get(`ray${c}`);
           curRay.push(curColumn[i]);
         };
       }
@@ -61,19 +60,21 @@ function playerSwitch() {
 
 // // FUNCTION -reset game
 function reset() {
-  winCheck.delete(4);
+  for (let i = 4; i <= winCheck.size; i++) {
+    winCheck.delete(i);
+  }
 
   for (let i = 0; i <= 6; i++) {
     rayMap.set(`ray${i}`, []);
   }
 
   for (let i = 0; i < cells.length; i++) {
-    cells[i].setAttribute("class", 'cell')
+    cells[i].setAttribute("class", 'cell');
   }
   color = "red";
-  tieGameCount = 0
+  tieGameCount = 0;
   setDOM();
-  localStorage.setItem("currentGame", undefined)
+  localStorage.setItem("savedGame", null);
 }
 
 // // FUNCTION -win
@@ -106,7 +107,6 @@ function checkConnect(pickedColumn, indxOrigin, cDirection, incline) {
     };
 
   }
-
   return matchCount + invMatchCount + 1;
 }
 
@@ -121,7 +121,8 @@ function checkWin(pickedColumn, indxOrigin) {
     .add(checkConnect(pickedColumn, indxOrigin, 0, 1))
     // Declining
     .add(checkConnect(pickedColumn, indxOrigin, 1, -1))
-  if (winCheck.has(4) === true) {
+  let winCheckSize = winCheck.size;
+  if (winCheckSize > 3) {
     for (let i = 0; i <= 6; i++) {
       let shutdownColumn = document.getElementById(`${i}`)
       shutdownColumn.removeEventListener("click", placePiece)
@@ -135,7 +136,7 @@ function checkWin(pickedColumn, indxOrigin) {
       preSaveRay.push(rayMap.get(`ray${i}`))
       preSaveStr = JSON.stringify(preSaveRay);
     }
-    localStorage.setItem("currentGame", preSaveStr);
+    localStorage.setItem("savedGame", preSaveStr);
   };
 }
 
