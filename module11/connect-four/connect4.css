@@ -12,6 +12,7 @@ display: flex;
   flex-direction: column;
   margin: .5vw;
 width:8vw;
+max-width: 8vh;
   /* background-color: yellow; */
 }
 
@@ -24,7 +25,9 @@ background-color: rgb(245 245 245);
   border-radius: 4vw;
   margin: .5vw;
   width: 8vw;
+  max-width: 8vh;
   height: 8vw;
+  max-height: 8vh;
 }
 
 .red{
