@@ -1,0 +1,141 @@
+/* some colors you may find useful:
+  #115ff4 light blue
+  #060ce9 dark blue
+  #28a200 green
+  #8d2ab5 lt maroon
+  #74119c maroon
+*/
+body{
+  width: 100vmin;
+  height: 100vmin;
+  color: white;
+  background: linear-gradient(black, #222222);
+}
+
+div{
+  display: flex;
+  border-radius: 15%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+#board{
+  flex-direction: row;
+}
+
+.answerGroup{
+  flex-direction: column;
+}
+
+.category {
+  border: solid yellow 1px;
+}
+
+.unanswered, .category, .activeQuestion, .wrong, .right{
+  flex-wrap: wrap;
+  height: 15vmin;
+  width: 15vmin;
+
+  /*This is to get the text centered*/
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  margin: .5vmin; /*This is the space between screens */
+}
+
+
+.unanswered, .category, .activeQuestion{
+  background:
+  radial-gradient(ellipse at 15% 12%, white, transparent 5%),
+  radial-gradient(ellipse at 40% 12%, rgba(255,255,255,.5), rgba(255,255,255,.15) 60%, transparent 70%),
+  radial-Gradient(  #060ce9, #115ff4);
+}
+
+.wrong{
+  opacity: 1;
+  background-image:
+  radial-gradient(ellipse at 15% 12%, white, transparent 5%),
+  radial-gradient(ellipse at 40% 12%, rgba(255,255,255,.5), rgba(255,255,255,.15) 60%, transparent 70%),
+  radial-Gradient(  #8d2ab5,  #74119c);
+}
+
+.right{
+  border: solid 2px #28a200;
+  background:
+  radial-gradient(ellipse at 15% 12%, white, transparent 5%),
+  radial-gradient(ellipse at 40% 12%, rgba(255,255,255,.5), rgba(255,255,255,.15) 60%, transparent 70%),
+  radial-Gradient(  #030896, #0a388d);
+}
+
+/* Big window that opens and asks the question with the answer bar */
+#questionWindow { 
+  position: absolute;
+  flex-direction: column;
+  left: 4%;
+  top: 15%;
+  height: 85vmin;
+  /* width: 85vmin; */
+  border: solid black .5vw;
+  box-shadow: 0vw 0vw 10vmin black, 0vw 0vw 5vmin black;
+  background-color: #115ff4;
+  }
+
+  #aniOverlay{
+  height: 85vmin;
+    /* border: solid 5px red;
+    background-color: white; */
+      background:
+  radial-gradient(ellipse at 15% 12%, white, transparent 5%),
+  radial-gradient(ellipse at 40% 12%, rgba(255,255,255,.5), rgba(255,255,255,.15) 60%, transparent 70%),
+  radial-Gradient( transparent, rgba(0,0,0,.25));
+    opacity: 1;
+  }
+
+  #bottomTxt {
+    height: 70vmin;
+    width: 70vmin;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  #question {  height: 70vmin;
+    width: 70vmin;
+    font-size: 6vmin;
+    font-size-adjust:none;
+  }
+
+.closed{
+  width: 0vmin;
+  transition: .5s
+}
+
+.questionWindowOpen, .questionWindowWrong, .questionWindowRight{
+  width: 85vmin;
+  transition: .5s
+}
+
+.questionWindowWrong{
+  background-color: #8d2ab5;
+  animation: flashWrong .2s ease-in-out forwards 5 alternate;
+}
+
+@keyframes flashWrong{
+  0%{}
+  100%{
+    background-color: #8d2ab5;
+  }
+  }
+
+.questionWindowRight {
+  border: solid 2px #40ff00;
+  animation: flashRight .2s ease-in-out forwards 5 alternate;
+}
+
+@keyframes flashRight{
+0%{}
+100%{
+  border: solid 5px #40ff01;
+}
+}
